@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://d4eui5267pcec"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jaham"]
+sky_top_color = Color(0.21878791, 0.3818203, 0.7046067, 1)
+sky_horizon_color = Color(0.4268625, 0.46377295, 0.5401549, 1)
+ground_bottom_color = Color(0.0438428, 0.031923383, 0.019845659, 1)
+ground_horizon_color = Color(0.30825487, 0.31470218, 0.32760945, 1)
+
+[sub_resource type="Sky" id="Sky_s03bs"]
+sky_material = SubResource("ProceduralSkyMaterial_jaham")
+
+[sub_resource type="Environment" id="Environment_88362"]
+background_mode = 2
+sky = SubResource("Sky_s03bs")
+
+[node name="vila" type="Node3D" unique_id=1246189536]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1764990418]
+environment = SubResource("Environment_88362")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1703863336]
+transform = Transform3D(-0.9914449, -0.11105304, 0.06858775, 0, 0.5254716, 0.8508111, -0.13052608, 0.8435323, -0.5209762, 0, 0, 0)
+light_color = Color(1, 1, 0.6431373, 1)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1731100127]
+size = Vector3(10, 0.2, 10)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=1210484596]
+inner_radius = 7.173968
+outer_radius = 7.730348
