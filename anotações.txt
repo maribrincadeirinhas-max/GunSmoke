@@ -1,2 +1,4 @@
 Câmera em 3º pessoa
 pelo menos 2 cenárioss
+
+fzer o jogador porpocional as construções do cenário, (que passe pela porta)

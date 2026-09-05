@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://d4eui5267pcec"]
 
+[ext_resource type="PackedScene" uid="uid://be2aks5b1q58f" path="res://modelagens/casaFaroeste.blend" id="1_s03bs"]
+[ext_resource type="PackedScene" uid="uid://b788sv6mt0pnn" path="res://scenes/jogador.tscn" id="2_88362"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jaham"]
 sky_top_color = Color(0.21878791, 0.3818203, 0.7046067, 1)
 sky_horizon_color = Color(0.4268625, 0.46377295, 0.5401549, 1)
@@ -19,13 +22,26 @@ sky = SubResource("Sky_s03bs")
 environment = SubResource("Environment_88362")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1703863336]
-transform = Transform3D(-0.9914449, -0.11105304, 0.06858775, 0, 0.5254716, 0.8508111, -0.13052608, 0.8435323, -0.5209762, 0, 0, 0)
+transform = Transform3D(-0.9914449, -0.111053035, 0.06858776, 0, 0.5254716, 0.8508111, -0.13052608, 0.8435323, -0.5209762, 0, 10.294399, 0)
 light_color = Color(1, 1, 0.6431373, 1)
 shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1731100127]
-size = Vector3(10, 0.2, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0808105, 0, -3.3115234)
+use_collision = true
+size = Vector3(16.161621, 0.2, 16.623047)
 
-[node name="CSGTorus3D" type="CSGTorus3D" parent="." unique_id=1210484596]
-inner_radius = 7.173968
-outer_radius = 7.730348
+[node name="casaFaroeste" parent="." unique_id=877287288 instance=ExtResource("1_s03bs")]
+transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, 5.1531377, 0.8755827, -1.4924555)
+
+[node name="casaFaroeste3" parent="." unique_id=1713946389 instance=ExtResource("1_s03bs")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -9.731291, 0.8755827, -11.27707)
+
+[node name="casaFaroeste2" parent="." unique_id=842670163 instance=ExtResource("1_s03bs")]
+transform = Transform3D(-0.8, 0, 6.9938224e-08, 0, 0.8, 0, -6.9938224e-08, 0, -0.8, -0.059859753, 0.8755827, 4.7490244)
+
+[node name="casaFaroeste4" parent="." unique_id=795538127 instance=ExtResource("1_s03bs")]
+transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, -10.490847, 0.8755827, 1.1184721)
+
+[node name="jogador" parent="." unique_id=256342507 instance=ExtResource("2_88362")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0307932, 0)

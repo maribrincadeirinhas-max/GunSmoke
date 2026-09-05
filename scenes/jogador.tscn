@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b788sv6mt0pnn"]
+
+[ext_resource type="Script" uid="uid://c5vcya3d851kd" path="res://scripts/jogador.gd" id="1_vwxko"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yf5fn"]
+height = 1.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yf5fn"]
+height = 1.1079102
+
+[node name="jogador" type="CharacterBody3D" unique_id=256342507 groups=["jogador"]]
+collision_mask = 7
+script = ExtResource("1_vwxko")
+
+[node name="mesh" type="MeshInstance3D" parent="." unique_id=1098875902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_g4v7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1502903714]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_yf5fn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=336366195]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5539551, 0)
+shape = SubResource("CylinderShape3D_yf5fn")
+
+[node name="cabeca" type="Node3D" parent="." unique_id=1442726362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3755426, -0.020134598)
+
+[node name="Camera3D" type="Camera3D" parent="cabeca" unique_id=982299025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45061088, -0.33310962)
