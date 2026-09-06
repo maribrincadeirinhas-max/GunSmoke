@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://l7bu20ir0okx"]
+
+[ext_resource type="Texture2D" uid="uid://cgvibwdihwtng" path="res://modelagens/textures/paint.png" id="1_0fmgw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p6xlu"]
+albedo_texture = ExtResource("1_0fmgw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rh7jv"]
+albedo_texture = ExtResource("1_0fmgw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ytve"]
+albedo_texture = ExtResource("1_0fmgw")
+
+[node name="arma" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+size = Vector3(0.1171875, 0.24609375, 0.5)
+material = SubResource("StandardMaterial3D_p6xlu")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.058258057, 0.056640625)
+operation = 2
+size = Vector3(0.1171875, 0.12957764, 0.38671875)
+material = SubResource("StandardMaterial3D_p6xlu")
+
+[node name="CSGBox3D3" type="CSGPolygon3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(-0.052487366, 0, 0.9986216, 0, 1, 0, -0.9986216, 0, -0.052487366, 0.14039093, -0.017425314, 0.08450532)
+operation = 2
+polygon = PackedVector2Array(0.3209362, 0.09482503, 0.24052155, 0.22258484, 0.33839995, 0.20835856, 0.47125542, 0.024252534)
+depth = 0.1
+material = SubResource("StandardMaterial3D_p6xlu")
+
+[node name="CSGBox3D4" type="CSGPolygon3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(-0.052487366, 0, 0.9986216, 0, 1, 0, -0.9986216, 0, -0.052487366, -0.0030120015, -0.017425314, 0.08450532)
+operation = 2
+polygon = PackedVector2Array(0.3209362, 0.09482503, 0.24052155, 0.22258484, 0.33839995, 0.20835856, 0.47125542, 0.024252534)
+depth = 0.1
+material = SubResource("StandardMaterial3D_p6xlu")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -0.007575006, -0.99997133, 0, 0.99997133, -0.007575006, 0, 0.05669344, 0.028563634)
+operation = 1
+radius = 0.058
+height = 0.4477539
+material = SubResource("StandardMaterial3D_rh7jv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010131836, -0.18563847, 0.10351576)
+size = Vector3(0.27124023, 0.16461182, 0.3671875)
+material = SubResource("StandardMaterial3D_rh7jv")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -0.006110316, -0.99998134, 0, 0.99998134, -0.006110316, 0, 0.05687496, 0.11375415)
+operation = 2
+radius = 0.03125
+height = 0.29589844
+material = SubResource("StandardMaterial3D_rh7jv")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8577178, 0.51412076, 0, -0.51412076, 0.8577178, 0, 0, -0.08035762)
+size = Vector3(0.04711914, 0.087646484, 0.0234375)
+material = SubResource("StandardMaterial3D_rh7jv")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(-0.006401538, 0.9999794, 0, -0.9999794, -0.006401538, 0, 0, 0, 1, 0, 0.028212517, -0.06943649)
+radius = 0.100097656
+height = 0.072265625
+material = SubResource("StandardMaterial3D_rh7jv")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCylinder3D"]
+transform = Transform3D(1, 1.6763806e-08, 0, -1.6763806e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+radius = 0.080078125
+height = 0.072265625
+material = SubResource("StandardMaterial3D_rh7jv")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D/CSGCylinder3D"]
+transform = Transform3D(-0.006401508, -0.202435, -0.97927076, 0.9999796, -0.0012959215, -0.0062689497, 0, -0.9792949, 0.20243904, -0.09715005, -0.00062192243, -0.00874649)
+operation = 2
+size = Vector3(0.13574219, 0.16894531, 0.044921875)
+material = SubResource("StandardMaterial3D_6ytve")

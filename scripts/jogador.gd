@@ -6,16 +6,21 @@ const JUMP_VELOCITY = 6.5
 var sensibilidade = 0.003
 var MOUSE_CAPTURADO = false
 var pulo = 4.5
+@onready var animation_som_arma: AnimationPlayer = $AnimationPlayer
+@onready var entre_tiro: Timer = $entre_tiro
+@onready var recarregando_pente: Timer = $recarregando_pente
 
 var camera_rotation: Vector2
 var limite_cima = -85
 var limite_baixo = 85
 @onready var cabeca: Node3D = $cabeca
 
+@onready var ponto_tiro: Marker3D = $cabeca/Marker3D
+
 @onready var vida : int = 100:
 	set(value):
 		vida = value
-#signal vida_alterada
+signal vida_alterada
 
 var atirou: bool = false
 var recarregando: bool = false
@@ -50,6 +55,16 @@ func _physics_process(delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		MOUSE_CAPTURADO = false
 	
+	if Input.is_action_just_pressed("atirar") and not atirou and not recarregando:
+		atirar()
+	
+	if Input.is_action_just_pressed("recarregar"):
+		if Gerenciador.munition > 0:
+			recarregando = true
+			animation_som_arma.play("recarregar")
+			Gerenciador.recarregar_pente(Gerenciador.balas_atuais)
+			recarregando_pente.start()
+	
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -62,6 +77,54 @@ func _input(event: InputEvent) -> void:
 		cabeca.transform.basis = Basis()
 		cabeca.rotate_x(camera_rotation.x)
 		#rotate_y(-event.relative.x * sensibilidade) #rotate_look(event.relative)
+	
+	if Input.is_action_just_pressed("atirar"):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		MOUSE_CAPTURADO = true
+
+func atirar():
+	if Gerenciador.munition == 0 and Gerenciador.balas_atuais == 0:
+		return
+	
+	atirou = true
+	animation_som_arma.play("atirar")
+	Gerenciador.atirou(1)
+	
+	if Gerenciador.balas_atuais == 0 and Gerenciador.munition > 0:
+		recarregando = true
+		animation_som_arma.play("recarregar")
+		Gerenciador.recarregar_pente(Gerenciador.balas_atuais)
+		recarregando_pente.start()
+	
+	var bala3D = preload("res://scenes/bala.tscn")
+	var nova_bala = bala3D.instantiate()
+	ponto_tiro.add_child(nova_bala)
+	
+	nova_bala.global_transform = ponto_tiro.global_transform
+	entre_tiro.start()
+
+func tomar_dano(dano : int):
+	vida -= dano
+	vida_alterada.emit()
+	
+	if vida <= 0:
+		derrota()
+
+func coletar_municao(qtd_balas : int):
+	Gerenciador.munition += qtd_balas
+	Gerenciador.atualizar_IU()
 
 func derrota():
 	print("Você morreu")
+
+func _on_entre_tiro_timeout() -> void:
+	atirou = false
+
+func _on_recarregando_pente_timeout() -> void:
+	recarregando = false
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area.is_in_group("bullet"):
+		tomar_dano(area.dano)
+		area.queue_free()

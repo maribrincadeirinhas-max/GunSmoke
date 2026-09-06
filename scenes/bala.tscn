@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://brep4dd61md30"]
+
+[ext_resource type="Script" uid="uid://kle0nav17l5b" path="res://scripts/bala.gd" id="1_27eus"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+albedo_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4v7s"]
+radius = 0.028102903
+
+[node name="bala" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.060362555, 0)
+top_level = true
+collision_mask = 7
+script = ExtResource("1_27eus")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058213234, -0.0013767481)
+radius = 0.029234372
+material = SubResource("StandardMaterial3D_g4v7s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.058115996, -0.001468271)
+shape = SubResource("SphereShape3D_g4v7s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
