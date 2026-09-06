@@ -15,7 +15,7 @@ func atirou(tiro: int):
 	
 	atualizar_IU()
 
-func recarregar_pente(quantidade: int):
+func recarregar_pente():
 	if munition == 0:
 		return
 	

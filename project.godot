@@ -28,6 +28,7 @@ window/stretch/aspect="expand"
 
 jogador=""
 inimigos=""
+bullet=""
 
 [input]
 

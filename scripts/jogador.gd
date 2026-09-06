@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		if Gerenciador.munition > 0:
 			recarregando = true
 			animation_som_arma.play("recarregar")
-			Gerenciador.recarregar_pente(Gerenciador.balas_atuais)
+			Gerenciador.recarregar_pente()
 			recarregando_pente.start()
 	
 	move_and_slide()
@@ -93,7 +93,7 @@ func atirar():
 	if Gerenciador.balas_atuais == 0 and Gerenciador.munition > 0:
 		recarregando = true
 		animation_som_arma.play("recarregar")
-		Gerenciador.recarregar_pente(Gerenciador.balas_atuais)
+		Gerenciador.recarregar_pente()
 		recarregando_pente.start()
 	
 	var bala3D = preload("res://scenes/bala.tscn")
