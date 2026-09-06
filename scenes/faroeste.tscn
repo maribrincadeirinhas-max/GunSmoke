@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfmrp488bt02i"]
+[gd_scene load_steps=8 format=3 uid="uid://bfmrp488bt02i"]
 
 [ext_resource type="PackedScene" uid="uid://be2aks5b1q58f" path="res://modelagens/casaFaroeste.blend" id="1_c0w2b"]
 [ext_resource type="PackedScene" uid="uid://b651cvbvxw4n3" path="res://scenes/jogador.tscn" id="2_pxefw"]
@@ -17,6 +17,10 @@ sky_material = SubResource("ProceduralSkyMaterial_jaham")
 background_mode = 2
 sky = SubResource("Sky_s03bs")
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_pxefw"]
+vertices = PackedVector3Array(-10.661621, 0.4, -11.123047, -10.661621, 0.4, 4.376953, 4.588379, 0.4, 4.376953, 4.588379, 0.4, -11.123047)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [node name="faroeste" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -27,15 +31,18 @@ transform = Transform3D(-0.9914449, -0.111053035, 0.06858776, 0, 0.5254716, 0.85
 light_color = Color(1, 1, 0.6431373, 1)
 shadow_enabled = true
 
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_pxefw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0808105, 0, -3.3115234)
+use_collision = true
+size = Vector3(16.161621, 0.2, 16.623047)
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 collision_layer = 4
 collision_mask = 7
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0808105, 0, -3.3115234)
-use_collision = true
-size = Vector3(16.161621, 0.2, 16.623047)
 
 [node name="casaFaroeste" parent="CSGCombiner3D" instance=ExtResource("1_c0w2b")]
 transform = Transform3D(-3.4969112e-08, 0, -0.8, 0, 0.8, 0, 0.8, 0, -3.4969112e-08, 5.1531377, 0.8755827, -1.4924555)
@@ -50,9 +57,9 @@ transform = Transform3D(-0.8, 0, 6.9938224e-08, 0, 0.8, 0, -6.9938224e-08, 0, -0
 transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, -10.490847, 0.8755827, 1.1184721)
 
 [node name="jogador" parent="." instance=ExtResource("2_pxefw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4254913, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.202527, 0)
 
 [node name="inimigos" type="Node3D" parent="."]
 
 [node name="inimigo" parent="inimigos" instance=ExtResource("3_pxefw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.919117, 5.720639, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.919117, 1.6364512, 0)

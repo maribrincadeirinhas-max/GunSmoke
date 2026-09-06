@@ -8,7 +8,6 @@ var MOUSE_CAPTURADO = false
 var pulo = 4.5
 @onready var animation_som_arma: AnimationPlayer = $AnimationPlayer
 @onready var entre_tiro: Timer = $entre_tiro
-@onready var recarregando_pente: Timer = $recarregando_pente
 
 var camera_rotation: Vector2
 var limite_cima = -85
@@ -16,6 +15,7 @@ var limite_baixo = 85
 @onready var cabeca: Node3D = $cabeca
 
 @onready var ponto_tiro: Marker3D = $cabeca/Marker3D
+@onready var marker2: Marker3D = $cabeca/Marker3D2
 
 @onready var vida : int = 100:
 	set(value):
@@ -58,13 +58,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("atirar") and not atirou and not recarregando:
 		atirar()
 	
-	if Input.is_action_just_pressed("recarregar"):
-		if Gerenciador.munition > 0:
-			recarregando = true
-			animation_som_arma.play("recarregar")
-			Gerenciador.recarregar_pente()
-			recarregando_pente.start()
-	
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
@@ -83,25 +76,21 @@ func _input(event: InputEvent) -> void:
 		MOUSE_CAPTURADO = true
 
 func atirar():
-	if Gerenciador.munition == 0 and Gerenciador.balas_atuais == 0:
-		return
-	
 	atirou = true
 	animation_som_arma.play("atirar")
-	Gerenciador.atirou(1)
 	
-	if Gerenciador.balas_atuais == 0 and Gerenciador.munition > 0:
-		recarregando = true
-		animation_som_arma.play("recarregar")
-		Gerenciador.recarregar_pente()
-		recarregando_pente.start()
+	gerar_bala(ponto_tiro)
+	gerar_bala(marker2)
+	entre_tiro.start()
+
+func gerar_bala(ponto : Marker3D):
+	animation_som_arma.play("atirar")
 	
 	var bala3D = preload("res://scenes/bala.tscn")
 	var nova_bala = bala3D.instantiate()
-	ponto_tiro.add_child(nova_bala)
+	ponto.add_child(nova_bala)
 	
-	nova_bala.global_transform = ponto_tiro.global_transform
-	entre_tiro.start()
+	nova_bala.global_transform = ponto.global_transform
 
 func tomar_dano(dano : int):
 	vida -= dano
@@ -119,9 +108,6 @@ func derrota():
 
 func _on_entre_tiro_timeout() -> void:
 	atirou = false
-
-func _on_recarregando_pente_timeout() -> void:
-	recarregando = false
 
 
 func _on_area_3d_area_entered(area: Area3D) -> void:

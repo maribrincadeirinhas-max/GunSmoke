@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var speed = 4.0
+@export var speed = 2.0
 @export var vida = 100
 @export var dano = 1
 @export var raio_visao = 15.0
@@ -91,6 +91,7 @@ func perder_vida(qtd):
 	vida -= qtd
 	
 	if vida <= 0:
+		Gerenciador.pontuar_jogador(150)
 		queue_free()
 
 

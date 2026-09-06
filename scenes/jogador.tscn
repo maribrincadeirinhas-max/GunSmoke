@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://b651cvbvxw4n3"]
+[gd_scene load_steps=15 format=3 uid="uid://b651cvbvxw4n3"]
 
 [ext_resource type="Script" uid="uid://b71hws12qeu38" path="res://scripts/jogador.gd" id="1_vwxko"]
 [ext_resource type="PackedScene" uid="uid://l7bu20ir0okx" path="res://scenes/arma.tscn" id="2_uahlj"]
 [ext_resource type="Script" uid="uid://c6knpw1i0h4w4" path="res://scripts/interface_do_usuario.gd" id="3_32758"]
 [ext_resource type="Texture2D" uid="uid://ch0s2u1brvm2t" path="res://assets/imagem/mira.png" id="4_lj65x"]
 [ext_resource type="AudioStream" uid="uid://b8ow31posvq6u" path="res://assets/audio/revolver_tiro.wav" id="4_s760d"]
-[ext_resource type="AudioStream" uid="uid://mn3hjltnjyxh" path="res://assets/audio/recarregando_arma.wav" id="5_32758"]
 [ext_resource type="PackedScene" uid="uid://b44jhb31qlfpt" path="res://scenes/barra_de_vida.tscn" id="5_lj65x"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
@@ -25,18 +24,6 @@ tracks/0/path = NodePath(".:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../recarregando:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -62,18 +49,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_8gwte"]
 resource_name = "recarregar"
 length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../recarregando:playing")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jl1eh"]
 _data = {
@@ -107,8 +82,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3755426, -0.020134598)
 [node name="arma" parent="cabeca" instance=ExtResource("2_uahlj")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5, 0, -1.1527239)
 
+[node name="arma2" parent="cabeca" instance=ExtResource("2_uahlj")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.548279, 0, -1.1527239)
+
 [node name="Marker3D" type="Marker3D" parent="cabeca"]
-transform = Transform3D(0.99975497, 0, 0.02213739, 0, 1, 0, -0.02213739, 0, 0.99975497, 0.502411, 0.014397621, -1.3970962)
+transform = Transform3D(0.99950653, 0, 0.03141076, 0, 1, 0, -0.03141076, 0, 0.99950653, 0.502411, 0.014397621, -1.3970962)
+
+[node name="Marker3D2" type="Marker3D" parent="cabeca"]
+transform = Transform3D(0.99950653, 0, -0.03141076, 0, 1, 0, 0.03141076, 0, 0.99950653, -0.56282455, 0.014397621, -1.3970962)
 
 [node name="Camera3D" type="Camera3D" parent="cabeca"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45061088, -0.33310962)
@@ -139,60 +120,31 @@ grow_vertical = 2
 texture = ExtResource("4_lj65x")
 expand_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="cabeca/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -170.0
-offset_top = -89.0
-offset_right = -24.0
-offset_bottom = -26.0
-grow_horizontal = 0
-grow_vertical = 0
-color = Color(0, 0, 0, 0.3764706)
-
-[node name="label_arma_pente" type="Label" parent="cabeca/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -147.0
-offset_top = -105.0
-offset_right = -14.0
-offset_bottom = -13.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 64
-text = "6/6"
-
 [node name="ColorRect2" type="ColorRect" parent="cabeca/Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 42.0
-offset_top = -85.0
-offset_right = 159.0
-offset_bottom = -22.0
-grow_vertical = 0
+anchors_preset = -1
+anchor_left = 0.44900003
+anchor_top = 0.026
+anchor_right = 0.55300003
+anchor_bottom = 0.123
+offset_left = -20.248047
+offset_top = 12.152
+offset_right = 14.94397
+offset_bottom = -6.7040024
+grow_horizontal = 2
 color = Color(0, 0, 0, 0.3764706)
 
-[node name="label_munition" type="Label" parent="cabeca/Control"]
+[node name="label_pontuacao" type="Label" parent="cabeca/Control"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 61.0
-offset_top = -100.0
-offset_right = 194.0
-offset_bottom = -8.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 64
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 26.0
+offset_right = 41.60791
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
 text = "10"
 
 [node name="ProgressBar" parent="cabeca/Control" node_paths=PackedStringArray("jogador") instance=ExtResource("5_lj65x")]
@@ -207,9 +159,6 @@ jogador = NodePath("../../..")
 [node name="tiro" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_s760d")
 
-[node name="recarregando" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("5_32758")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../tiro")
 libraries = {
@@ -219,9 +168,6 @@ libraries = {
 [node name="entre_tiro" type="Timer" parent="."]
 one_shot = true
 
-[node name="recarregando_pente" type="Timer" parent="."]
-wait_time = 2.0
-
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="corpo" type="CollisionShape3D" parent="Area3D"]
@@ -229,5 +175,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7145996, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
 
 [connection signal="timeout" from="entre_tiro" to="." method="_on_entre_tiro_timeout"]
-[connection signal="timeout" from="recarregando_pente" to="." method="_on_recarregando_pente_timeout"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
