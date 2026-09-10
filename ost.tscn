@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://co844py5kxfq2"]
-
-[ext_resource type="AudioStream" uid="uid://c12un5cepqxsw" path="res://assets/audio/Ostdefundo.wav" id="1_8tbpm"]
-
-[node name="OST" type="AudioStreamPlayer3D"]
-stream = ExtResource("1_8tbpm")
-autoplay = true
