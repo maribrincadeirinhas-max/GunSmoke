@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://dmrwp0sy8f4i8" path="res://scenes/casa_faroeste.tscn" id="1_pxefw"]
 [ext_resource type="PackedScene" uid="uid://b651cvbvxw4n3" path="res://scenes/jogador.tscn" id="2_pxefw"]
 [ext_resource type="PackedScene" uid="uid://bh00onq25v210" path="res://scenes/cercas.tscn" id="2_vdmqa"]
-[ext_resource type="PackedScene" uid="uid://bdl8kn7npgmnm" path="res://scenes/inimigo.tscn" id="3_pxefw"]
-[ext_resource type="PackedScene" uid="uid://djitp4xo4ivow" path="res://modelagens/barril.blend" id="5_3xh7v"]
+[ext_resource type="PackedScene" uid="uid://dq72cjauxeysu" path="res://scenes/barril.tscn" id="3_3xh7v"]
+[ext_resource type="PackedScene" uid="uid://dhttpic2vn27r" path="res://scenes/inimigo.tscn" id="5_3xh7v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jaham"]
 sky_top_color = Color(0.21878791, 0.3818203, 0.7046067, 1)
@@ -148,13 +148,13 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.
 
 [node name="barrils" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="barril" parent="NavigationRegion3D/barrils" instance=ExtResource("5_3xh7v")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -7.1013927, 0.59825444, -10.215328)
+[node name="barril" parent="NavigationRegion3D/barrils" instance=ExtResource("3_3xh7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.435603, 0.6516682, -9.468816)
 
 [node name="jogador" parent="." instance=ExtResource("2_pxefw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.202527, 0)
 
 [node name="inimigos" type="Node3D" parent="."]
 
-[node name="inimigo" parent="inimigos" instance=ExtResource("3_pxefw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.919117, 1.6364512, 0)
+[node name="inimigo" parent="inimigos" instance=ExtResource("5_3xh7v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7565584, 1.7833166, 0)
