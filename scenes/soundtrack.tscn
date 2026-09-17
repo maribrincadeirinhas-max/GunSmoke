@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://s2j5dl4jikqq"]
+
+[ext_resource type="AudioStream" uid="uid://c12un5cepqxsw" path="res://assets/audio/Ostdefundo.wav" id="1_eeapa"]
+[ext_resource type="Script" uid="uid://c8inty8pxned3" path="res://scripts/soundtrack.gd" id="2_eeapa"]
+
+[node name="Soundtrack" type="AudioStreamPlayer"]
+stream = ExtResource("1_eeapa")
+volume_db = -7.0
+autoplay = true
+script = ExtResource("2_eeapa")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

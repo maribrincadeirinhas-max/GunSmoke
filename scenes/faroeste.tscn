@@ -1,14 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfmrp488bt02i"]
+[gd_scene load_steps=12 format=3 uid="uid://bfmrp488bt02i"]
 
 [ext_resource type="PackedScene" uid="uid://dmrwp0sy8f4i8" path="res://scenes/casa_faroeste.tscn" id="1_pxefw"]
 [ext_resource type="PackedScene" uid="uid://b651cvbvxw4n3" path="res://scenes/jogador.tscn" id="2_pxefw"]
 [ext_resource type="PackedScene" uid="uid://bh00onq25v210" path="res://scenes/cercas.tscn" id="2_vdmqa"]
 [ext_resource type="PackedScene" uid="uid://dq72cjauxeysu" path="res://scenes/barril.tscn" id="3_3xh7v"]
-[ext_resource type="PackedScene" uid="uid://dhttpic2vn27r" path="res://scenes/inimigo.tscn" id="5_3xh7v"]
-[ext_resource type="PackedScene" uid="uid://bdl8kn7npgmnm" path="res://scenes/inimigo.tscn" id="3_pxefw"]
-[ext_resource type="PackedScene" uid="uid://djitp4xo4ivow" path="res://modelagens/barril.blend" id="5_3xh7v"]
-[ext_resource type="AudioStream" uid="uid://c12un5cepqxsw" path="res://assets/audio/Ostdefundo.wav" id="6_pnolp"]
-[ext_resource type="Script" uid="uid://dml14iu1o0cly" path="res://scenes/OST.gd" id="7_imyhu"]
+[ext_resource type="PackedScene" uid="uid://bdl8kn7npgmnm" path="res://scenes/boss.tscn" id="3_pxefw"]
+[ext_resource type="PackedScene" uid="uid://s2j5dl4jikqq" path="res://scenes/soundtrack.tscn" id="6_imyhu"]
 [ext_resource type="AudioStream" uid="uid://bket06ctxh5hx" path="res://assets/audio/pulo.mp3" id="8_jajqu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jaham"]
@@ -161,20 +158,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.435603, 0.6516682, -9.4688
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.202527, 0)
 
 [node name="inimigos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6183077, 0)
 
-[node name="inimigo" parent="inimigos" instance=ExtResource("5_3xh7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7565584, 1.7833166, 0)
-[node name="inimigo" parent="inimigos" instance=ExtResource("3_pxefw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.919117, 1.6364512, 0)
+[node name="inimigo2" parent="inimigos" instance=ExtResource("3_pxefw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8920124, 1.6364511, 0)
 
-[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_pnolp")
-volume_db = -7.0
-autoplay = true
-script = ExtResource("7_imyhu")
+[node name="Soundtrack" parent="." instance=ExtResource("6_imyhu")]
 
 [node name="Pulando" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_jajqu")
 volume_db = -10.0
-
-[connection signal="finished" from="Soundtrack" to="Soundtrack" method="_on_finished"]
