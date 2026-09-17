@@ -1,22 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhttpic2vn27r"]
+[gd_scene load_steps=13 format=3 uid="uid://bdl8kn7npgmnm"]
 
-[ext_resource type="Script" uid="uid://bs5bpvn23ub8v" path="res://scripts/inimigo.gd" id="1_pt50e"]
+[ext_resource type="Script" uid="uid://esb7shynvnt3" path="res://scripts/boss.gd" id="1_pt50e"]
+[ext_resource type="PackedScene" uid="uid://l7bu20ir0okx" path="res://scenes/arma.tscn" id="2_61lki"]
 [ext_resource type="AudioStream" uid="uid://b8ow31posvq6u" path="res://assets/audio/revolver_tiro.wav" id="3_21tsg"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_61lki"]
-radius = 0.55078125
-height = 2.0639648
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4v7s"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_pt50e"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g4v7s"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61lki"]
-albedo_color = Color(0, 0, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_meo5e"]
+albedo_color = Color(0.9286073, 0, 0.17347592, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_21tsg"]
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
 size = Vector3(0.50878906, 0.24804688, 0.38464355)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4er16"]
-albedo_color = Color(0.11372549, 0.12156863, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1b7a"]
+albedo_color = Color(0.92941177, 0, 0.17254902, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yf5fn"]
 
 [sub_resource type="Animation" id="Animation_4er16"]
 length = 0.001
@@ -55,29 +56,38 @@ _data = {
 &"atirar": SubResource("Animation_21tsg")
 }
 
-[node name="inimigo" type="CharacterBody3D"]
+[node name="boss" type="CharacterBody3D" groups=["inimigos"]]
 collision_layer = 2
-collision_mask = 7
+collision_mask = 15
 script = ExtResource("1_pt50e")
-vida = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031982422, 0)
-shape = SubResource("CapsuleShape3D_61lki")
+shape = SubResource("CapsuleShape3D_g4v7s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_pt50e")
-surface_material_override/0 = SubResource("StandardMaterial3D_61lki")
+mesh = SubResource("CapsuleMesh_g4v7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_meo5e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68501544, -0.3536932)
-mesh = SubResource("BoxMesh_21tsg")
-surface_material_override/0 = SubResource("StandardMaterial3D_4er16")
+mesh = SubResource("BoxMesh_g4v7s")
+surface_material_override/0 = SubResource("StandardMaterial3D_a1b7a")
+
+[node name="corpo" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="corpo"]
+shape = SubResource("CapsuleShape3D_yf5fn")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 collision_mask = 7
+
+[node name="arma" parent="." instance=ExtResource("2_61lki")]
+transform = Transform3D(-0.99569416, 0, 0.09269944, 0, 1, 0, -0.09269944, 0, -0.99569416, 0, 0.35408473, -0.88720536)
+
+[node name="Marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025853649, 0.41468024, -1.125624)
 
 [node name="tiro" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_21tsg")
@@ -91,3 +101,4 @@ libraries = {
 one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

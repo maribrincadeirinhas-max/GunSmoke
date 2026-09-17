@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc7j3uq4yrlem"]
+
+[ext_resource type="Script" uid="uid://bc8gnl10i1268" path="res://dinheiro.gd" id="1_gtc27"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gtc27"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qwkkq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qwkkq"]
+
+[node name="dinheiro" type="CharacterBody3D"]
+script = ExtResource("1_gtc27")
+
+[node name="dinheiroarea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dinheiroarea"]
+shape = SubResource("SphereShape3D_gtc27")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_qwkkq")
+skeleton = NodePath("../dinheiroarea")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qwkkq")
