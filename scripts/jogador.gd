@@ -13,7 +13,7 @@ var camera_rotation: Vector2
 var limite_cima = -85
 var limite_baixo = 85
 @onready var cabeca: Node3D = $cabeca
-
+@onready var pulando = $"../Pulando"
 @onready var ponto_tiro: Marker3D = $cabeca/Marker3D
 @onready var marker2: Marker3D = $cabeca/Marker3D2
 
@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("pulo") and is_on_floor():
+		pulando.play()
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
