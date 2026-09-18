@@ -68,6 +68,11 @@ atirar={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="jogador"
+3d_physics/layer_2="mapa"
+
 [physics]
 
 common/physics_ticks_per_second=200

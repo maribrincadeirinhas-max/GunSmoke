@@ -94,7 +94,6 @@ func perder_vida(qtd):
 		Gerenciador.pontuar_jogador(150)
 		queue_free()
 
-
 func atirar():
 	atirou = true
 	animation_som_arma.play("atirar")

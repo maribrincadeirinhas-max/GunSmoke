@@ -92,7 +92,7 @@ transform = Transform3D(0.99950653, 0, 0.03141076, 0, 1, 0, -0.03141076, 0, 0.99
 transform = Transform3D(0.99950653, 0, -0.03141076, 0, 1, 0, 0.03141076, 0, 0.99950653, -0.56282455, 0.014397621, -1.3970962)
 
 [node name="Camera3D" type="Camera3D" parent="cabeca"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45061088, -0.33310962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45061088, 1.8966258)
 
 [node name="Control" type="Control" parent="cabeca"]
 layout_mode = 3

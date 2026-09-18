@@ -90,4 +90,7 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31434, 0)
+
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

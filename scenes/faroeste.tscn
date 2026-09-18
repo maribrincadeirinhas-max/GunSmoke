@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b651cvbvxw4n3" path="res://scenes/jogador.tscn" id="2_pxefw"]
 [ext_resource type="PackedScene" uid="uid://bh00onq25v210" path="res://scenes/cercas.tscn" id="2_vdmqa"]
 [ext_resource type="PackedScene" uid="uid://dq72cjauxeysu" path="res://scenes/barril.tscn" id="3_3xh7v"]
-[ext_resource type="PackedScene" uid="uid://bdl8kn7npgmnm" path="res://scenes/boss.tscn" id="3_pxefw"]
+[ext_resource type="PackedScene" uid="uid://dhttpic2vn27r" path="res://scenes/inimigo.tscn" id="5_imyhu"]
 [ext_resource type="PackedScene" uid="uid://s2j5dl4jikqq" path="res://scenes/soundtrack.tscn" id="6_imyhu"]
 [ext_resource type="AudioStream" uid="uid://bket06ctxh5hx" path="res://assets/audio/pulo.mp3" id="8_jajqu"]
 
@@ -41,6 +41,7 @@ navigation_mesh = SubResource("NavigationMesh_pxefw")
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0808105, 0, -88.101875)
 use_collision = true
+collision_layer = 2
 size = Vector3(30.812256, 0.2, 186.20375)
 
 [node name="casaFaroeste" parent="NavigationRegion3D" instance=ExtResource("1_pxefw")]
@@ -155,13 +156,22 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -11.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.435603, 0.6516682, -9.468816)
 
 [node name="jogador" parent="." instance=ExtResource("2_pxefw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.202527, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5533764, 1.202527, 0)
 
 [node name="inimigos" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6183077, 0)
 
-[node name="inimigo2" parent="inimigos" instance=ExtResource("3_pxefw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8920124, 1.6364511, 0)
+[node name="inimigo" parent="inimigos" instance=ExtResource("5_imyhu")]
+transform = Transform3D(-0.9991446, 0, -0.041352548, 0, 1, 0, 0.041352548, 0, -0.9991446, -4.577573, 0.8780502, -19.460354)
+
+[node name="inimigo2" parent="inimigos" instance=ExtResource("5_imyhu")]
+transform = Transform3D(-0.998589, 0, -0.053102925, 0, 1, 0, 0.053102925, 0, -0.998589, -3.0613403, 0.9245981, -31.832504)
+
+[node name="inimigo3" parent="inimigos" instance=ExtResource("5_imyhu")]
+transform = Transform3D(0.99436, 0, 0.10605599, 0, 1, 0, -0.10605599, 0, 0.99436, 1.6860795, 1.8491963, -59.37875)
+
+[node name="inimigo4" parent="inimigos" instance=ExtResource("5_imyhu")]
+transform = Transform3D(0.99436, 0, 0.10605599, 0, 1, 0, -0.10605599, 0, 0.99436, -9.781906, 1.8491963, -59.37875)
 
 [node name="Soundtrack" parent="." instance=ExtResource("6_imyhu")]
 
