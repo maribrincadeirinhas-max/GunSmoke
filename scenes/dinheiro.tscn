@@ -1,17 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cc7j3uq4yrlem"]
+[gd_scene load_steps=5 format=3 uid="uid://cc7j3uq4yrlem"]
 
 [ext_resource type="Script" uid="uid://bc8gnl10i1268" path="res://scripts/dinheiro.gd" id="1_xog3y"]
+[ext_resource type="PackedScene" uid="uid://d13j4e6cg0hmp" path="res://modelagens/dinheiro.glb" id="2_r2a0c"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gtc27"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_qwkkq"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xog3y"]
-albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qwkkq"]
 
 [node name="dinheiro" type="CharacterBody3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_xog3y")
@@ -21,10 +18,8 @@ script = ExtResource("1_xog3y")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dinheiroarea"]
 shape = SubResource("SphereShape3D_gtc27")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_qwkkq")
-skeleton = NodePath("../dinheiroarea")
-surface_material_override/0 = SubResource("StandardMaterial3D_xog3y")
+[node name="dinheiro" parent="." instance=ExtResource("2_r2a0c")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0029090643, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_qwkkq")
