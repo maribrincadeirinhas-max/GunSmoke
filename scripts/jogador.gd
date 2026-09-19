@@ -16,6 +16,7 @@ var limite_baixo = 85
 @onready var pulando = $"../Pulando"
 @onready var ponto_tiro: Marker3D = $cabeca/Marker3D
 @onready var marker2: Marker3D = $cabeca/Marker3D2
+@onready var tiro_som: AudioStreamPlayer3D = $tiro
 
 @onready var vida : int = 100:
 	set(value):
@@ -78,7 +79,7 @@ func _input(event: InputEvent) -> void:
 
 func atirar():
 	atirou = true
-	animation_som_arma.play("atirar")
+	tiro_som.play()
 	
 	gerar_bala(ponto_tiro)
 	gerar_bala(marker2)
