@@ -1,5 +1,4 @@
 extends "res://scripts/boss.gd"
-@onready var marker_3d: Marker3D = $Marker3D
 
 func atirar():
 	pass
@@ -8,7 +7,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity .move_toward(safe_velocity, 0.25)
 
 func drop():
-	var chance = 5#randi_range(1,5)
+	var chance = randi_range(1,5)
 	
 	if chance == 5:
 		dropar_dinheiro()
