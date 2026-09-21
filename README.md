@@ -18,8 +18,22 @@ O objetivo do projeto é desenvolver uma versão 3D inspirada em Gunsmoke, coloc
 *  Sistema de vida
 *  Cenário em 3D
 *  Sistema de pontuação
+*  Sistema de dropar item
 
 *As funcionalidades serão atualizadas conforme o desenvolvimento do projeto.*
+
+## Controles
+
+| Tecla                     | Ação                  |
+| ------------------------- | --------------------- |
+| `W`                       | Mover para frente     |
+| `A`                       | Mover para a esquerda |
+| `S`                       | Mover para trás       |
+| `D`                       | Mover para a direita  |
+| `Mouse`                   | Mirar                 |
+| `Botão esquerdo do mouse` | Atirar                |
+| `Espaço`                  | Pular                 |
+| `Esc`                     | Exibir cursor do mouse|
 
 ## Tecnologias utilizadas
 
