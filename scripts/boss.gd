@@ -1,3 +1,4 @@
+class_name inimigos
 extends CharacterBody3D
 
 @export var speed = 2.0

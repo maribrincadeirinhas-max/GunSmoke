@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bfmrp488bt02i"]
+[gd_scene load_steps=18 format=3 uid="uid://bfmrp488bt02i"]
 
 [ext_resource type="Texture2D" uid="uid://mnho6qucie7y" path="res://modelagens/textures/chao_terra.png" id="1_jajqu"]
 [ext_resource type="PackedScene" uid="uid://dmrwp0sy8f4i8" path="res://scenes/casa_faroeste.tscn" id="1_pxefw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dhttpic2vn27r" path="res://scenes/inimigo.tscn" id="5_imyhu"]
 [ext_resource type="PackedScene" uid="uid://s2j5dl4jikqq" path="res://scenes/soundtrack.tscn" id="6_imyhu"]
 [ext_resource type="AudioStream" uid="uid://bket06ctxh5hx" path="res://assets/audio/pulo.mp3" id="8_jajqu"]
+[ext_resource type="PackedScene" uid="uid://dmb7pv3u5ltxq" path="res://scenes/inimigo_alcance.tscn" id="8_vn73b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jaham"]
 sky_top_color = Color(0.26516983, 0.38143045, 0.6668227, 1)
@@ -274,6 +275,12 @@ transform = Transform3D(0.99436, 0, 0.10605599, 0, 1, 0, -0.10605599, 0, 0.99436
 
 [node name="inimigo4" parent="inimigos" instance=ExtResource("5_imyhu")]
 transform = Transform3D(0.99436, 0, 0.10605599, 0, 1, 0, -0.10605599, 0, 0.99436, -9.781906, 1.8491963, -59.37875)
+
+[node name="inimigo_alcance" parent="inimigos" instance=ExtResource("8_vn73b")]
+transform = Transform3D(-0.03899817, 0, -0.99923927, 0, 1, 0, 0.99923927, 0, -0.03899817, -11.822413, 4.773898, -29.889832)
+
+[node name="inimigo_alcance2" parent="inimigos" instance=ExtResource("8_vn73b")]
+transform = Transform3D(0.8453271, 0, 0.534249, 0, 1, 0, -0.534249, 0, 0.8453271, 7.748575, 7.308323, -29.889832)
 
 [node name="Soundtrack" parent="." instance=ExtResource("6_imyhu")]
 

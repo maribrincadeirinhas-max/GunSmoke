@@ -59,6 +59,7 @@ _data = {
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_pt50e")
+speed = 4.0
 vida = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
