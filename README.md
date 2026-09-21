@@ -12,12 +12,12 @@ O objetivo do projeto é desenvolver uma versão 3D inspirada em Gunsmoke, coloc
 
 ## Funcionalidades
 
-* [ ] Movimentação do jogador
-* [ ] Sistema de tiro
-* [ ] Inimigos
-* [ ] Sistema de vida
-* [ ] Cenário em 3D
-* [ ] Sistema de pontuação
+*  Movimentação do jogador
+*  Sistema de tiro
+*  Inimigos
+*  Sistema de vida
+*  Cenário em 3D
+*  Sistema de pontuação
 
 *As funcionalidades serão atualizadas conforme o desenvolvimento do projeto.*
 
