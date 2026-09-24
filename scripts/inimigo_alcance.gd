@@ -4,6 +4,9 @@ extends inimigos
 func ir_para_o_jogador(position_alvo : Vector3):
 	pass
 
+func drop():
+	pass
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta

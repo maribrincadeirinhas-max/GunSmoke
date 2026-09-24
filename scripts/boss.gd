@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var dano = 1
 @export var raio_visao = 15.0
 var atirou: bool = false
+@export var eh_boss : bool = true
 
 var curvaspeed = 4.0
 @onready var alvo: Node3D
@@ -25,6 +26,7 @@ func _ready() -> void:
 	rayCast.add_exception(self)
 
 func _physics_process(delta: float) -> void:
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -93,6 +95,8 @@ func perder_vida(qtd):
 	
 	if vida <= 0:
 		Gerenciador.pontuar_jogador(150)
+		if eh_boss:
+			Gerenciador.boss_derrotado = true
 		queue_free()
 
 func atirar():

@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-
 const SPEED = 7.0
 const JUMP_VELOCITY = 6.5
 var sensibilidade = 0.003
@@ -8,6 +7,7 @@ var MOUSE_CAPTURADO = false
 var pulo = 4.5
 @onready var animation_som_arma: AnimationPlayer = $AnimationPlayer
 @onready var entre_tiro: Timer = $entre_tiro
+@onready var animation_player: AnimationPlayer = $Gunman/AnimationPlayer
 
 var camera_rotation: Vector2
 var limite_cima = -85
@@ -17,6 +17,7 @@ var limite_baixo = 85
 @onready var ponto_tiro: Marker3D = $cabeca/Marker3D
 @onready var marker2: Marker3D = $cabeca/Marker3D2
 @onready var tiro_som: AudioStreamPlayer3D = $tiro
+@onready var progress_bar: ProgressBar = $cabeca/Control/ProgressBar
 
 @onready var vida : int = 100:
 	set(value):
@@ -31,6 +32,10 @@ func _ready() -> void:
 	MOUSE_CAPTURADO = true
 	camera_rotation.y = rotation.y
 	camera_rotation.x = rotation.x
+	print(animation_player.get_animation_list())
+	animation_player.speed_scale = 4.0 
+	vida = 100
+	progress_bar.value = vida
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -47,9 +52,11 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("esquerda", "direita", "frente", "tras")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		animation_player.play("ArmatureAction")
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		animation_player.play("idle/idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
@@ -61,6 +68,10 @@ func _physics_process(delta: float) -> void:
 		atirar()
 	
 	move_and_slide()
+	
+	if Gerenciador.boss_derrotado:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		get_tree().change_scene_to_file("res://scenes/vitoria.tscn")
 
 func _input(event: InputEvent) -> void:
 	if MOUSE_CAPTURADO and event is InputEventMouseMotion:
@@ -106,7 +117,8 @@ func coletar_municao(qtd_balas : int):
 	Gerenciador.atualizar_IU()
 
 func derrota():
-	print("Você morreu")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file("res://scenes/derrota.tscn")
 
 func _on_entre_tiro_timeout() -> void:
 	atirou = false

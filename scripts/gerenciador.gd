@@ -2,6 +2,7 @@ extends Node
 
 var vida_jogador: int = 100
 var pontuacao: int = 0
+var boss_derrotado = false
 
 signal pontuacao_mudou(pontu)
 

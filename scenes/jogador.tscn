@@ -1,16 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://b651cvbvxw4n3"]
+[gd_scene load_steps=13 format=3 uid="uid://b651cvbvxw4n3"]
 
 [ext_resource type="Script" uid="uid://b71hws12qeu38" path="res://scripts/jogador.gd" id="1_vwxko"]
-[ext_resource type="PackedScene" uid="uid://l7bu20ir0okx" path="res://scenes/arma.tscn" id="2_uahlj"]
 [ext_resource type="Script" uid="uid://c6knpw1i0h4w4" path="res://scripts/interface_do_usuario.gd" id="3_32758"]
 [ext_resource type="Texture2D" uid="uid://ch0s2u1brvm2t" path="res://assets/imagem/mira.png" id="4_lj65x"]
 [ext_resource type="AudioStream" uid="uid://b8ow31posvq6u" path="res://assets/audio/revolver_tiro.wav" id="4_s760d"]
 [ext_resource type="PackedScene" uid="uid://b44jhb31qlfpt" path="res://scenes/barra_de_vida.tscn" id="5_lj65x"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_g4v7s"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_yf5fn"]
-height = 1.0
+[ext_resource type="PackedScene" uid="uid://bhx0g774u2pvq" path="res://scenes/gunman.tscn" id="7_lj65x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yf5fn"]
 height = 1.1079102
@@ -64,14 +59,6 @@ height = 1.5239258
 collision_mask = 7
 script = ExtResource("1_vwxko")
 
-[node name="mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("SphereMesh_g4v7s")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("CylinderMesh_yf5fn")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5539551, 0)
 shape = SubResource("CylinderShape3D_yf5fn")
@@ -79,20 +66,14 @@ shape = SubResource("CylinderShape3D_yf5fn")
 [node name="cabeca" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3755426, -0.020134598)
 
-[node name="arma" parent="cabeca" instance=ExtResource("2_uahlj")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.5, 0, -1.1527239)
-
-[node name="arma2" parent="cabeca" instance=ExtResource("2_uahlj")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.548279, 0, -1.1527239)
-
 [node name="Marker3D" type="Marker3D" parent="cabeca"]
-transform = Transform3D(0.99950653, 0, 0.03141076, 0, 1, 0, -0.03141076, 0, 0.99950653, 0.502411, 0.014397621, -1.3970962)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.16658863, -0.16616976, -0.68237627)
 
 [node name="Marker3D2" type="Marker3D" parent="cabeca"]
-transform = Transform3D(0.99950653, 0, -0.03141076, 0, 1, 0, 0.03141076, 0, 0.99950653, -0.56282455, 0.014397621, -1.3970962)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.07605742, -0.16138601, -0.7191112)
 
 [node name="Camera3D" type="Camera3D" parent="cabeca"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45061088, 1.8966258)
+transform = Transform3D(1, 0, 0, 0, 0.93983585, 0.34162652, 0, -0.34162652, 0.9398358, 0, 0.45061088, 1.0183308)
 
 [node name="Control" type="Control" parent="cabeca"]
 layout_mode = 3
@@ -102,15 +83,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_32758")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="cabeca/Control"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.2638889
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.2638889
 offset_left = -25.0
 offset_top = -25.0
 offset_right = 25.0
@@ -119,6 +101,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_lj65x")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect2" type="ColorRect" parent="cabeca/Control"]
 layout_mode = 1
@@ -133,6 +116,7 @@ offset_right = 14.94397
 offset_bottom = -6.7040024
 grow_horizontal = 2
 color = Color(0, 0, 0, 0.3764706)
+metadata/_edit_use_anchors_ = true
 
 [node name="label_pontuacao" type="Label" parent="cabeca/Control"]
 layout_mode = 1
@@ -146,6 +130,7 @@ offset_bottom = 71.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "10"
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" parent="cabeca/Control" node_paths=PackedStringArray("jogador") instance=ExtResource("5_lj65x")]
 layout_mode = 0
@@ -155,6 +140,7 @@ offset_right = 314.0
 offset_bottom = 41.0
 show_percentage = true
 jogador = NodePath("../../..")
+metadata/_edit_use_anchors_ = true
 
 [node name="tiro" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_s760d")
@@ -175,5 +161,10 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7145996, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
 
+[node name="Gunman" parent="." instance=ExtResource("7_lj65x")]
+transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0.75732327, 0)
+
 [connection signal="timeout" from="entre_tiro" to="." method="_on_entre_tiro_timeout"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+
+[editable path="Gunman"]

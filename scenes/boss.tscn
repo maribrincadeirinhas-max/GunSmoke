@@ -62,9 +62,11 @@ collision_mask = 15
 script = ExtResource("1_pt50e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_g4v7s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_g4v7s")
 surface_material_override/0 = SubResource("StandardMaterial3D_meo5e")
 
@@ -84,10 +86,10 @@ shape = SubResource("CapsuleShape3D_yf5fn")
 collision_mask = 7
 
 [node name="arma" parent="." instance=ExtResource("2_61lki")]
-transform = Transform3D(-0.99569416, 0, 0.09269944, 0, 1, 0, -0.09269944, 0, -0.99569416, 0, 0.35408473, -0.88720536)
+transform = Transform3D(-0.99569416, 0, 0.09269944, 0, 1, 0, -0.09269944, 0, -0.99569416, 0, 0.4662639, -0.88720536)
 
 [node name="Marker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025853649, 0.41468024, -1.125624)
+transform = Transform3D(1, 0, 0, 0, 0.9950971, 0.09890293, 0, -0.09890293, 0.9950971, 0.025853649, 0.41468024, -1.125624)
 
 [node name="tiro" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_21tsg")

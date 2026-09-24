@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnsefl5s7sqdc"]
+
+[ext_resource type="Texture2D" uid="uid://byv3wyjk5h4eo" path="res://assets/imagem/chapeu.png" id="1_78d6e"]
+[ext_resource type="Script" uid="uid://bknqjbwlm55it" path="res://scripts/derrota.gd" id="1_owb28"]
+[ext_resource type="StyleBox" uid="uid://c0s0wug0b1phi" path="res://modelagens/textures/button_texture.tres" id="2_owb28"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2eb1"]
+bg_color = Color(0.6761414, 0.3583941, 0.0068891468, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.23754841, 0.10895964, 0.0017462799, 1)
+
+[node name="derrota" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_owb28")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(429, 357.00003)
+scale = Vector2(5, 5)
+texture = ExtResource("1_78d6e")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 57.0
+offset_top = -24.0
+offset_right = 220.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_owb28")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u2eb1")
+text = "Continuar"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
